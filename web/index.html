@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Exchange Lab</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Rust market microstructure simulator</p>
+        <h1>Live Exchange Lab</h1>
+        <p class="lede">
+          Stream real replay events, FIFO matching mechanics, latency races, and strategy behavior
+          directly from the Rust backend.
+        </p>
+      </div>
+      <div class="status">
+        <span class="dot"></span>
+        <span id="backendStatus">connecting</span>
+      </div>
+    </header>
+
+    <section class="metrics" aria-label="project summary">
+      <article>
+        <span>Nasdaq-derived events</span>
+        <strong id="metricEvents">-</strong>
+        <small>deterministic LOBSTER replay</small>
+      </article>
+      <article>
+        <span>Ground truth validation</span>
+        <strong id="metricValidation">-</strong>
+        <small>10-level book reconstruction</small>
+      </article>
+      <article>
+        <span>Latency race result</span>
+        <strong id="metricRace">-</strong>
+        <small>co-location queue advantage</small>
+      </article>
+      <article>
+        <span>Strategy behavior</span>
+        <strong id="metricPnl">-</strong>
+        <small>inventory-aware market making</small>
+      </article>
+    </section>
+
+    <section class="lab">
+      <nav class="steps" aria-label="experiment selector">
+        <button class="step active" data-scenario="replay">
+          <b>01</b>
+          <span>Deterministic replay</span>
+          <small>Real events reconstruct visible book state.</small>
+        </button>
+        <button class="step" data-scenario="matching">
+          <b>02</b>
+          <span>FIFO matching</span>
+          <small>Queue priority determines fills.</small>
+        </button>
+        <button class="step" data-scenario="latency">
+          <b>03</b>
+          <span>Latency race</span>
+          <small>Arrival time becomes queue position.</small>
+        </button>
+        <button class="step" data-scenario="strategy">
+          <b>04</b>
+          <span>Strategy behavior</span>
+          <small>Execution dynamics become PnL and risk.</small>
+        </button>
+      </nav>
+
+      <section class="stage">
+        <div class="stageTop">
+          <div>
+            <p class="eyebrow" id="scenarioEyebrow">Experiment 01</p>
+            <h2 id="scenarioTitle">Deterministic replay</h2>
+            <p id="scenarioCopy">
+              The backend streams LOBSTER message rows and validated book snapshots in order.
+            </p>
+          </div>
+          <div class="controls">
+            <button id="playBtn">Play stream</button>
+            <button id="stopBtn" class="ghost">Stop</button>
+            <button id="resetBtn" class="ghost">Reset</button>
+          </div>
+        </div>
+
+        <div class="narrative" id="narrative">
+          Select an experiment and press play. Each step is emitted by the Rust backend.
+        </div>
+
+        <div class="visualGrid">
+          <section class="panel primary">
+            <div class="panelHead">
+              <h3 id="visualTitle">Order book reconstruction</h3>
+              <span id="streamClock">idle</span>
+            </div>
+            <div id="visual" class="visual replayView">
+              <div class="ladder" id="askLadder"></div>
+              <div class="midline">
+                <span>ASK</span>
+                <span>validated book</span>
+                <span>BID</span>
+              </div>
+              <div class="ladder" id="bidLadder"></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panelHead">
+              <h3>Live metric trace</h3>
+              <span id="chartLabel">top quantity</span>
+            </div>
+            <div class="chartWrap">
+              <canvas id="liveChart"></canvas>
+              <p id="chartFallback" class="fallback">Chart.js is unavailable. Streaming visuals remain active.</p>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel tapePanel">
+          <div class="panelHead">
+            <h3>Event causality tape</h3>
+            <span id="eventCount">0 events</span>
+          </div>
+          <div class="tape" id="tape"></div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

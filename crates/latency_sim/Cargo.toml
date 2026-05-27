@@ -1,0 +1,11 @@
+[package]
+name = "latency_sim"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+market_events = { path = "../market_events" }
+matching_engine = { path = "../matching_engine" }

@@ -1,0 +1,11 @@
+[package]
+name = "replay_engine"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+market_events = { path = "../market_events" }
+orderbook = { path = "../orderbook" }

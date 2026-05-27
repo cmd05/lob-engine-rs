@@ -1,0 +1,18 @@
+[package]
+name = "benchmarks"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "benchmarks"
+path = "main.rs"
+
+[dependencies]
+latency_sim = { path = "../latency_sim" }
+lobster_parser = { path = "../lobster_parser" }
+matching_engine = { path = "../matching_engine" }
+market_events = { path = "../market_events" }
+orderbook = { path = "../orderbook" }
+replay_engine = { path = "../replay_engine" }
+strategies = { path = "../strategies" }
+validator = { path = "../validator" }

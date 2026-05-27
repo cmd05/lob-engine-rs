@@ -1,0 +1,17 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "server"
+path = "main.rs"
+
+[dependencies]
+lobster_parser = { path = "../lobster_parser" }
+market_events = { path = "../market_events" }
+orderbook = { path = "../orderbook" }
+latency_sim = { path = "../latency_sim" }
+matching_engine = { path = "../matching_engine" }
+strategies = { path = "../strategies" }
+validator = { path = "../validator" }

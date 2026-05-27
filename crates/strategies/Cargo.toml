@@ -1,0 +1,11 @@
+[package]
+name = "strategies"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+analytics = { path = "../analytics" }
+latency_sim = { path = "../latency_sim" }

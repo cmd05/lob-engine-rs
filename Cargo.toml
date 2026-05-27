@@ -1,0 +1,19 @@
+[workspace]
+members = [
+    "crates/market_events",
+    "crates/lobster_parser",
+    "crates/orderbook",
+    "crates/replay_engine",
+    "crates/validator",
+    "crates/matching_engine",
+    "crates/latency_sim",
+    "crates/analytics",
+    "crates/strategies",
+    "crates/benchmarks",
+    "crates/server",
+    "crates/cli",
+]
+resolver = "2"
+
+[profile.release]
+debug = true

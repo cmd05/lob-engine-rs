@@ -1,0 +1,108 @@
+{
+  "dataset": {
+    "symbol": "AAPL",
+    "date": "2012-06-21",
+    "source": "LOBSTER sample derived from Nasdaq TotalView-ITCH",
+    "events": 400391,
+    "bookLevels": 10,
+    "validation": "passed"
+  },
+  "performance": {
+    "parseSeconds": 0.794864,
+    "validationSeconds": 3.052059,
+    "eventsPerSecond": 131187.18
+  },
+  "matching": {
+    "scenario": "FIFO price-time demo with GTC, IOC, FOK, cancel and replace support",
+    "fills": 2,
+    "filledQuantity": 75,
+    "restingOrders": 1,
+    "bestBid": 10200,
+    "bestBidSize": 25,
+    "bestAsk": 9999999999,
+    "bestAskSize": 0,
+    "reports": [
+      { "seq": 1, "orderId": 1001, "status": "Rested", "filledQty": 0, "remainingQty": 50, "fills": 0 },
+      { "seq": 2, "orderId": 1002, "status": "Rested", "filledQty": 0, "remainingQty": 25, "fills": 0 },
+      { "seq": 3, "orderId": 2001, "status": "PartiallyFilled", "filledQty": 75, "remainingQty": 25, "fills": 2 },
+      { "seq": 4, "orderId": 3001, "status": "Expired", "filledQty": 0, "remainingQty": 500, "fills": 0 },
+      { "seq": 5, "orderId": 3002, "status": "Rejected", "filledQty": 0, "remainingQty": 0, "fills": 0 }
+    ]
+  },
+  "latency": {
+    "ordersSent": 60,
+    "ordersArrived": 60,
+    "ordersDropped": 0,
+    "colocatedWins": 10,
+    "remoteWins": 0,
+    "medianColocatedLatencyNs": 166670,
+    "medianRemoteLatencyNs": 24185103,
+    "avgQueueAdvantageNs": 24018433,
+    "arrivalTape": [
+      { "seq": 1, "agent": "colocated_market_maker", "arrivalNs": 1000278402, "latencyNs": 278402, "orderId": 20000, "filledQty": 5, "status": "Filled" },
+      { "seq": 2, "agent": "latency_arbitrage_trader", "arrivalNs": 1000603450, "latencyNs": 603450, "orderId": 40000, "filledQty": 5, "status": "Filled" },
+      { "seq": 3, "agent": "colocated_market_maker", "arrivalNs": 1001131350, "latencyNs": 131350, "orderId": 20001, "filledQty": 5, "status": "Filled" },
+      { "seq": 4, "agent": "latency_arbitrage_trader", "arrivalNs": 1001576908, "latencyNs": 576908, "orderId": 40001, "filledQty": 5, "status": "Filled" },
+      { "seq": 5, "agent": "colocated_market_maker", "arrivalNs": 1002140935, "latencyNs": 140935, "orderId": 20002, "filledQty": 5, "status": "Filled" },
+      { "seq": 6, "agent": "latency_arbitrage_trader", "arrivalNs": 1002684452, "latencyNs": 684452, "orderId": 40002, "filledQty": 5, "status": "Filled" },
+      { "seq": 7, "agent": "colocated_market_maker", "arrivalNs": 1003142085, "latencyNs": 142085, "orderId": 20003, "filledQty": 5, "status": "Filled" },
+      { "seq": 8, "agent": "latency_arbitrage_trader", "arrivalNs": 1003377554, "latencyNs": 377554, "orderId": 40003, "filledQty": 5, "status": "Filled" },
+      { "seq": 9, "agent": "colocated_market_maker", "arrivalNs": 1004187876, "latencyNs": 187876, "orderId": 20004, "filledQty": 5, "status": "Filled" },
+      { "seq": 10, "agent": "latency_arbitrage_trader", "arrivalNs": 1004641325, "latencyNs": 641325, "orderId": 40004, "filledQty": 5, "status": "Filled" },
+      { "seq": 11, "agent": "colocated_market_maker", "arrivalNs": 1005260639, "latencyNs": 260639, "orderId": 20005, "filledQty": 5, "status": "Filled" },
+      { "seq": 12, "agent": "latency_arbitrage_trader", "arrivalNs": 1005574140, "latencyNs": 574140, "orderId": 40005, "filledQty": 5, "status": "Filled" }
+    ]
+  },
+  "strategies": [
+    {
+      "name": "inventory_aware_market_maker",
+      "pnlCents": 1250,
+      "pnlDollars": 12.50,
+      "slippageCents": 0,
+      "inventory": 60,
+      "maxInventory": 60,
+      "fills": 38,
+      "orders": 128,
+      "fillRatioBps": 2968,
+      "adverseSelectionCents": 680,
+      "queueAheadShares": 420,
+      "equityCurveCents": [20,70,70,90,120,80,100,140,180,200,230,260,240,140,180,250,210,270,330,230,130,250,330,290,390,470,370,310,430,540,540,630,720,610,460,580,750,660,750,890,690,480,650,810,730,890,1010,810,660,850,1010,980,1130,1270,1120,870,1070,1310,1210,1360,1560,1250,1000,1250]
+    },
+    {
+      "name": "order_flow_imbalance",
+      "pnlCents": -220,
+      "pnlDollars": -2.20,
+      "slippageCents": 175,
+      "inventory": 35,
+      "maxInventory": 45,
+      "fills": 35,
+      "orders": 64,
+      "fillRatioBps": 5468,
+      "adverseSelectionCents": 87,
+      "queueAheadShares": 0,
+      "equityCurveCents": [0,0,0,0,0,0,0,0,0,-5,-5,-10,-15,-20,-25,-30,-35,-60,-80,-85,-90,-95,-100,-100,-100,-100,-100,-100,-100,-100,-100,-100,-100,-100,-100,-100,-100,-100,-100,-100,-75,-45,-10,-15,-20,-25,-30,-35,-40,-45,-50,-55,-60,-65,-70,-75,-80,-130,-175,-215,-220,-220,-220,-220]
+    },
+    {
+      "name": "toy_latency_arbitrage",
+      "pnlCents": 150,
+      "pnlDollars": 1.50,
+      "slippageCents": 0,
+      "inventory": 0,
+      "maxInventory": 0,
+      "fills": 10,
+      "orders": 60,
+      "fillRatioBps": 1666,
+      "adverseSelectionCents": 0,
+      "queueAheadShares": 24018433,
+      "equityCurveCents": [15,20,35,40,55,60,75,80,95,100,115,120,135,140,155,160,175,180,195,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200]
+    }
+  ],
+  "optimizations": [
+    "integer tick prices and nanosecond timestamps",
+    "deterministic fixed-seed latency sampling",
+    "order-id index for cancel/delete/replace lookup",
+    "const-generic fixed-size metric series for strategy curves",
+    "FOK liquidity pre-check before book mutation",
+    "arrival ordering by timestamp plus sequence tie-break"
+  ]
+}
